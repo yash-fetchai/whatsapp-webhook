@@ -1,0 +1,4 @@
+fastapi==0.68.0
+twilio==6.59.0
+python-dotenv==0.19.1
+uvicorn==0.15.0
