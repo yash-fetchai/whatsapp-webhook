@@ -1,15 +1,20 @@
 from fastapi import FastAPI, Request
 from twilio.rest import Client
 from datetime import datetime
+import json
 from dotenv import load_dotenv
 import os
 
-# Load environment variables from the .env file
+# Load environment variables from .env file
 load_dotenv()
 
 # Retrieve Twilio Account SID and Auth Token from environment variables
 account_sid = os.getenv("TWILIO_ACCOUNT_SID")
 auth_token = os.getenv("TWILIO_AUTH_TOKEN")
+
+# Check if credentials are present
+if account_sid is None or auth_token is None:
+    raise ValueError("Twilio credentials not found in .env file")
 
 app = FastAPI()
 
@@ -67,7 +72,7 @@ async def incoming_message(request: Request):
             to='whatsapp:+919579345348'
         )
 
-        print(response)
+        print (response)
 
         return {"message": "Message received successfully"}
     except Exception as e:
