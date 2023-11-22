@@ -20,6 +20,10 @@ client = Client(account_sid, auth_token)
 def test():
     print("webhook is working")
 
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    return ("webhook is working")
+
 @app.post("/whatsapp-webhook")
 async def incoming_message(request: Request):
     try:
