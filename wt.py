@@ -57,6 +57,7 @@ async def incoming_message(request: Request):
             # Process media content types and URLs here
 
         # Log the received message
+        print(account_sid, auth_token)
         print(f"Received message from {from_number} to {to_number}: {body}")
 
         # Add your logic to respond to the incoming message here if needed.
