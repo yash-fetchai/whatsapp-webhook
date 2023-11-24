@@ -71,7 +71,7 @@ async def incoming_message(request: Request):
             body=message_body,
             to='whatsapp:+919579345348'
         )
-
+        print(account_sid, auth_token)
         print (response)
 
         return {"message": "Message received successfully"}
