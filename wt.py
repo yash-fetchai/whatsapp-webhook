@@ -21,13 +21,16 @@ app = FastAPI()
 # Create the Twilio client
 client = Client(account_sid, auth_token)
 
+
 @app.get('/')
 def test():
     print("webhook is working")
 
+
 @app.get("/favicon.ico", include_in_schema=False)
 async def favicon():
     return ("webhook is working")
+
 
 @app.post("/whatsapp-webhook")
 async def incoming_message(request: Request):
@@ -52,12 +55,13 @@ async def incoming_message(request: Request):
 
         if num_media > 0:
             for n in range(num_media):
-                media_content_types.append(form_data.get(f"MediaContentType{n}"))
+                media_content_types.append(
+                    form_data.get(f"MediaContentType{n}"))
                 media_urls.append(form_data.get(f"MediaUrl{n}"))
             # Process media content types and URLs here
 
         # Log the received message
-        print(account_sid, auth_token)
+        # print(account_sid, auth_token)
         print(f"Received message from {from_number} to {to_number}: {body}")
 
         # Add your logic to respond to the incoming message here if needed.
@@ -68,12 +72,13 @@ async def incoming_message(request: Request):
 
         message_body = f'Hello, this is a testing message sent at {current_time} IST on {current_date}'
         response = client.messages.create(
-            from_='whatsapp:+14155238886',
+            from_='whatsapp:+447897026355',
             body=message_body,
             to='whatsapp:+919579345348'
         )
-        print(account_sid, auth_token)
-        print (response)
+
+        # print(account_sid, auth_token)
+        print(response)
 
         return {"message": "Message received successfully"}
     except Exception as e:
