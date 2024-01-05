@@ -24,7 +24,7 @@ client = Client(account_sid, auth_token)
 
 @app.get('/')
 def test():
-    print("webhook is working")
+    print("webhook is working fine")
 
 
 @app.get("/favicon.ico", include_in_schema=False)
