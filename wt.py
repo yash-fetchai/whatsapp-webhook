@@ -35,38 +35,38 @@ async def favicon():
 @app.post("/whatsapp-webhook")
 async def incoming_message(request: Request):
     try:
-        # Use request.form() to parse the URL-encoded data
-        form_data = await request.form()
+    #     # Use request.form() to parse the URL-encoded data
+    #     form_data = await request.form()
 
-        # Extract the necessary fields from the form data
-        message_sid = form_data.get("SmsMessageSid")
-        from_number = form_data.get("From")
-        to_number = form_data.get("To")
-        body = form_data.get("Body")
-        num_media_str = form_data.get("NumMedia")
-        if num_media_str is not None:
-            num_media = int(num_media_str)
-        else:
-            num_media = 0
+    #     # Extract the necessary fields from the form data
+    #     message_sid = form_data.get("SmsMessageSid")
+    #     from_number = form_data.get("From")
+    #     to_number = form_data.get("To")
+    #     body = form_data.get("Body")
+    #     num_media_str = form_data.get("NumMedia")
+    #     if num_media_str is not None:
+    #         num_media = int(num_media_str)
+    #     else:
+    #         num_media = 0
 
-        # Handle media-related parameters if media is present
-        media_content_types = []
-        media_urls = []
+    #     # Handle media-related parameters if media is present
+    #     media_content_types = []
+    #     media_urls = []
 
-        if num_media > 0:
-            for n in range(num_media):
-                media_content_types.append(
-                    form_data.get(f"MediaContentType{n}"))
-                media_urls.append(form_data.get(f"MediaUrl{n}"))
-            # Process media content types and URLs here
+    #     if num_media > 0:
+    #         for n in range(num_media):
+    #             media_content_types.append(
+    #                 form_data.get(f"MediaContentType{n}"))
+    #             media_urls.append(form_data.get(f"MediaUrl{n}"))
+    #         # Process media content types and URLs here
 
-        # Log the received message
-        # print(account_sid, auth_token)
-        print(f"Received message from {from_number} to {to_number}: {body}")
+    #     # Log the received message
+    #     # print(account_sid, auth_token)
+    #     print(f"Received message from {from_number} to {to_number}: {body}")
 
-        # Add your logic to respond to the incoming message here if needed.
+    #     # Add your logic to respond to the incoming message here if needed.
 
-        # Now, you can also send a response if necessary
+    #     # Now, you can also send a response if necessary
         current_time = datetime.now().strftime("%I:%M %p")
         current_date = datetime.now().strftime("%d/%m/%Y")
 
