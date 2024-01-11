@@ -56,7 +56,8 @@ async def whatsapp_webhook(request: Request):
         return {"status": "success", "message_sid": message.sid}
     except Exception as e:
         print(f"Error processing request: {str(e)}")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+    raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+
 
 
 if __name__ == "__main__":
