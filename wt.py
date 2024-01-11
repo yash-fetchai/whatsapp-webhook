@@ -37,8 +37,7 @@ async def whatsapp_webhook(request: Request):
     phone_number = message_data.get("From", "")
     profile_name = message_data.get("ProfileName", "User")
 
-    response_message = f"Hi {profile_name} 👋, what are you looking for? 💬
-"
+    response_message = f"Hi {profile_name} 👋, what are you looking for? 💬"
 
 
     # Send the reply using the Twilio client
